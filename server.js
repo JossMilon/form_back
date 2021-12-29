@@ -2,6 +2,7 @@ const express = require("express");
 const formidable = require("express-formidable");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors());
@@ -15,7 +16,7 @@ mongoose.connect(process.env.MONGODB_URI);
 
 const User = require("./Models/User");
 
-app.post("/form/", async (req, res) => {
+app.post("/form", async (req, res) => {
     try {
         console.log(req.fields);
         const user = new User({
@@ -32,6 +33,6 @@ app.post("/form/", async (req, res) => {
     }
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
     console.log("Server has started...")
 });

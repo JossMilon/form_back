@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGODB_URI);
 
 const User = require("./Models/User");
 
-app.post("/form", async (req, res) => {
+app.post("/form/", async (req, res) => {
     try {
         console.log(req.fields);
         const user = new User({
@@ -32,6 +32,6 @@ app.post("/form", async (req, res) => {
     }
 })
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server has started...")
 });
